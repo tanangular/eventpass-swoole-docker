@@ -4,5 +4,5 @@ FROM mysql
 COPY mysqld.cnf /etc/mysql/mysql.conf.d/mysqld.cnf
 
 # Set China timezone
-RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo 'Asia/Shanghai' > /etc/timezone
+RUN /bin/cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime && \
+    echo 'Asia/Bangkok' > /etc/timezone
