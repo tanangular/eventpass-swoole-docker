@@ -1,6 +1,6 @@
 FROM php:latest
 
-MAINTAINER twosee <twose@qq.com>
+LABEL maintainer tanangular <tanangular@gmail.com>
 
 # install modules : GD iconv
 RUN apt-get update && apt-get install -y \
