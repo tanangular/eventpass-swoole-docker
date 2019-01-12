@@ -66,7 +66,7 @@ RUN cd /root && \
     echo "swoole.fast_serialize=On" >> /usr/local/etc/php/conf.d/docker-php-ext-swoole-serialize.ini && \
     rm -rf /tmp/*
 
-# set China timezone
+# set Thailand/Bangkok timezone
 RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
   echo 'Asia/Bangkok' > /etc/timezone && \
   echo "[Date]\ndate.timezone=Asia/Bangkok" > /usr/local/etc/php/conf.d/timezone.ini

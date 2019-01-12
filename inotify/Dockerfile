@@ -46,7 +46,7 @@ curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
 apt-get install -y nodejs && \
 npm install -g cnpm --registry=https://registry.npm.taobao.org
 
-# set China timezone
+# set Thailand/Bangkok timezone
 RUN /bin/cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime && \
   echo 'Asia/Bangkok' > /etc/timezone && \
     echo "[Date]\ndate.timezone=Asia/Bangkok" > /usr/local/etc/php/conf.d/timezone.ini

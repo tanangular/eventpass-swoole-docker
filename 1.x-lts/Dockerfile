@@ -62,7 +62,7 @@ RUN cd /root && \
     apt-get install -y gdb && \
     rm -rf /tmp/*
 
-# set China timezone
-RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo 'Asia/Shanghai' > /etc/timezone && \
-    echo "[Date]\ndate.timezone=Asia/Shanghai" > /usr/local/etc/php/conf.d/timezone.ini
+# set Thailand/Bangkok timezone
+RUN /bin/cp /usr/share/zoneinfo/Asia/Bangkok /etc/localtime && \
+  echo 'Asia/Bangkok' > /etc/timezone && \
+  echo "[Date]\ndate.timezone=Asia/Bangkok" > /usr/local/etc/php/conf.d/timezone.ini
