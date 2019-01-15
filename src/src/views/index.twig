@@ -1,0 +1,93 @@
+{% extends 'layouts/main.twig' %}
+
+{% block content %}
+<div class="min-h-screen relative">
+  <div class="min-h-screen flex flex-col">
+    <div class="flex items-center justify-center flex-1 mb-12">
+      <div class="max-w-sm w-full mx-auto">
+        <div class="mb-8 text-center">
+          <h1 class="mb-3 font-light text-4xl">Sign up {{ name }}</h1>
+        </div>
+        <form action="/auth" method="POST">
+          <div class="bg-white shadow rounded p-8 m-2">
+            <input type="hidden" value="{{ csrfToken }}" id="csrfToken" name="csrfToken">
+            <div class="flex">
+              <div class="w-1/2">
+                <label class="block mb-5"
+                  >
+                  <h4>Firstname *</h4>
+                  <input
+                    name="firstname"
+                    placeholder="First Name"
+                    autocomplete="street-address"
+                    class="text-field-white text-field-small"
+                  />
+                  <div class="text-red text-sm mt-1"><!----></div>
+                </label>
+              </div>
+              <div class="w-1/2 pl-4">
+                <label class="block mb-5"
+                  >
+                  <h4>Lastname *</h4>
+                  <input
+                    name="lastname"
+                    type="number"
+                    placeholder="Last Name"
+                    class="text-field-white text-field-small"
+                  />
+                  <div class="text-red text-sm mt-1"><!----></div>
+                </label>
+              </div>
+            </div>
+            <label class="block mb-5">
+              <h4>Mobile Number *</h4>
+              <input
+                name="mobile number"
+                placeholder="Mobile Number"
+                autocomplete="name"
+                class="text-field-white text-field-small"
+              />
+              <div class="text-red text-sm mt-1"><!----></div>
+            </label>
+            <label class="block mb-5">
+            <h4>Email</h4>
+              <input
+                name="email"
+                id="email"
+                type="email"
+                placeholder="Email"
+                autocomplete="email"
+                class="text-field-white text-field-small"
+              />
+              <div class="text-red text-sm mt-1"><!----></div>
+            </label>
+            <button class="button button-red w-full mt-6 text-white" id="registerBtn">สมัคร สมาชิก</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block custom_scripts %}
+{# <script>
+  $(document).ready(function(){
+    var csrfToken = $("#csrfToken").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
+    var registerBtn = $("#registerBtn");
+    registerBtn.click(function(event){
+      $.post("/auth",{
+       csrfToken,
+       username,
+       password
+      }).done(function(data){
+        console.log(data);
+        //$.cookie('token',data)
+      })
+    });
+  })
+</script> #}
+{% endblock %}

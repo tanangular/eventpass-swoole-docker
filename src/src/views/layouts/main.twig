@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Registration: EventPass 4.1</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/0.7.3/tailwind.min.css">
+  <style>
+  :root {
+    --red: #b7090a; 
+  }
+  .bg-spacegrey-lightest {
+    background-color: #f9f9fa;
+  }
+  .text-field-white {
+    line-height: 1.5;
+    display: block;
+    width: 100%;
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #dae1e7;
+    color: #32325d;
+    border-radius: .25rem;
+    padding: .75rem 1.25rem;
+}
+.button {
+    padding: .75rem 2rem;
+    display: inline-block;
+    border-radius: .25rem;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+}
+.button.button-red {
+    background-color: var(--red);
+}
+  </style>
+</head>
+<body class="font-sans min-h-screen antialiased leading-normal font-light bg-spacegrey-lightest">
+  {% block content %}
+  {% endblock %}
+  {% block scripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha256-1A78rJEdiWTzco6qdn3igTBv9VupN3Q1ozZNTR4WE/Y=" crossorigin="anonymous"></script>
+  {% endblock %}
+  {% block custom_scripts %}
+  {% endblock %}
+</body>
+</html>

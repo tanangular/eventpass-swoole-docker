@@ -1,13 +1,17 @@
 <?php
-$http = new swoole_http_server("0.0.0.0", 9501);
 
-$http->on("start", function ($server) {
-    echo "ตอนนี้ Swoole ได้อุบัติบนโลกแล้ว นักโทษ ภาคทัณฑ์ หมายเลข 45454656 รายงานตัวด่วน http server is started at http://127.0.0.1:9501\n";
-});
+$uri = urldecode(
+    parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
+);
 
-$http->on("request", function ($request, $response) {
-    $response->header("Content-Type", "text/plain");
-    $response->end("Hello World Elymsime\n");
-});
+if ($uri !== '/' && file_exists(__DIR__ . '/web' . $uri)) {
+    return false;
+}
 
-$http->start();
+require __DIR__ . '/vendor/autoload.php';
+
+$server = new blink\server\CgiServer([
+    'bootstrap' => __DIR__ . '/src/bootstrap.php'
+]);
+
+$server->run();

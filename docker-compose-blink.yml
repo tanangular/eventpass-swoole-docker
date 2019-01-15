@@ -1,0 +1,60 @@
+version: '3.4'
+services:
+  swoole:
+    image: $PREFIX_IMAGE/swoole-coroutine
+    build:
+      dockerfile: Dockerfile
+      context: 'release'
+    ports:
+      - "7788:7788"
+    volumes:
+      - ./src/test-app:/app/test-app:rw
+    restart: always
+    depends_on:
+      - mysql
+    command: >
+      bash -c "cd /app/test-app
+      && php blink server:serve --live-reload"
+
+  mysql:
+    image: $PREFIX_IMAGE/swoole-coroutine:mysql
+    build:
+      dockerfile: Dockerfile
+      context: 'mysql'
+    ports:
+      - "9502:3306"
+    volumes:
+      - ./data/mysql/data:/var/lib/mysql:rw
+      - ./data/mysql/sock:/var/run/mysqld:rw # remove when windows.
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: $MYSQL_DATABASE
+      MYSQL_USER: $MYSQL_USER
+      MYSQL_PASSWORD: $MYSQL_PASSWORD
+    
+  redis:
+    image: $PREFIX_IMAGE/swoole-coroutine:redis
+    build:
+      dockerfile: Dockerfile
+      context: 'redis'
+    ports:
+      - "9503:6379"
+    volumes:
+      - ./data/redis/data:/var/lib/redis:rw
+    sysctls:
+        net.core.somaxconn: 65535
+    restart: always
+
+  inotify:
+    image: $PREFIX_IMAGE/swoole-coroutine:inotify
+    build:
+      dockerfile: Dockerfile
+      context: 'inotify'
+    volumes:
+      - ./:/app:rw
+    restart: always
+    environment:
+      APP_ENV: dev # or product
+    working_dir: /app/util
+    command: /bin/bash inotify.sh
