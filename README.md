@@ -21,21 +21,9 @@ docker run -d --name=swoole \
 OR
 ```Bash
 docker-compose up
-```
-### Introduction
 
-- 基于最新PHP7.2-cli版本
-- 使用swoole1.X~4.X最新版本构建, 所有功能火力全开
-- 提供Swoole的绝佳搭档:` MySQL`, `Redis`, `Inotify`, 配合`docker-compose`, 实现开箱即用
-- 已安装 ["GD", "iconv", "pdo_mysql", "dom", "xml", "curl", "swoole"]等PHP扩展
-- 已开启["coroutine", "openssl", "http2", "async-redis", "mysqlnd", "swoole-serialize"]等所有功能
-- 纯环境 , 0冗余 , 绿色清洁 , 无任何php代码
-- 默认中国上海时区
-- inotify提供自动化热更新等支持
 
----
-
-- Based on PHP7.2-cli
+- Based on PHP7.3-cli
 - use swoole 1.*, 2.* and 4.*(libco) latest stable version, All functions are fully open
 - Provide the perfect partner for Swoole such as ` MySQL`, `Redis`, `Inotify` images, you can also use `docker-compose`, Out of the box.
 - PHP extension installed: ["GD", "iconv", "pdo_mysql", "dom", "xml", "curl", "swoole"]
@@ -128,3 +116,7 @@ $redis = new \Swoole\Coroutine\Redis();
 $redis->connect('redis', 6379);
 $val = $redis->get('foo');
 ```
+
+ใช้ร่วมกับ blink framework
+ใช้ docker-compose -f docker-compose-blink.yml up -d
+
